@@ -1,0 +1,6 @@
+clear
+clc
+a_main_lines_pts_eq_constr_noise
+a_main_lines_pts_eq_constr_small_num
+a_main_planar_eq_constr_lines_pts_noise
+a_main_planar_lines_pts_eq_constr_small_num

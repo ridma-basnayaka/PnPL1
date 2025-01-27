@@ -1,0 +1,32 @@
+syms v11 v12 v13 v14 v15 v16 real;
+syms v21 v22 v23 v24 v25 v26 real;
+syms v31 v32 v33 v34 v35 v36 real;
+syms a1 a2 a3 real;
+v1 = [v11;v12;v13;v14;v15;v16];
+v2 = [v21;v22;v23;v24;v25;v26];
+v3 = [v31;v32;v33;v34;v35;v36];
+r = a1*v1 + a2*v2 + a3*v3;
+c11 = r(1);
+c21 = r(2);
+c12 = r(3);
+c22 = r(4);
+c13 = r(5);
+c23 = r(6);
+c1 = [c11;c12;c13];
+c2 = [c21;c22;c23];
+f1 = dot(c1,c1) - 1;
+f2 = dot(c2,c2) - 1;
+f3 = dot(c1,c2);
+fall = [f1;f2;f3];
+unknowns = [a1 a2 a3];
+% sol = solve(fall,unknowns);
+
+[cf1,sf1] = coeffs(f1,unknowns);
+[cf2,sf2] = coeffs(f2,unknowns);
+[cf3,sf3] = coeffs(f3,unknowns);
+cf = [cf1;cf2;[cf3 0]];
+sf = sf1;
+cf(:,[2 3 4 5 6 ]) = cf(:,[4 6 2 3 5]);
+sf(:,[2 3 4 5 6 ]) = sf(:,[4 6 2 3 5]);
+disp(cf);disp(sf);
+
